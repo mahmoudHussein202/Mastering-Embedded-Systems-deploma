@@ -38,26 +38,36 @@ LL_status_t add_node_F(LL_node_t** pointer_to_head)
 }
 
 
-LL_status_t delete_node(LL_node_t** pointer_to_head, int ID)
+LL_status_t delete_node_F(LL_node_t** pointer_to_head)
 {
     if (*(pointer_to_head)==NULL)
         return empty_LL;
-    int temp_id;
+
+    int temp_id,counter=0;
     print("\n Enter the ID of student ");
     scanf("%d",&temp_id);
     LL_node_t* current_temp_pointer;
     LL_node_t* previous_temp_pointer;
     current_temp_pointer = *(pointer_to_head);
     previous_temp_pointer= *(pointer_to_head);
-    while(!(current_temp_pointer->student_data.ID == ID))
-    {
-        current_temp_pointer = (LL_node_t*)current_temp_pointer->next_node;
+    while(!(current_temp_pointer->student_data.ID == temp_id))
+    {   
         previous_temp_pointer = current_temp_pointer;
+        current_temp_pointer = (LL_node_t*)current_temp_pointer->next_node;
+        counter ++;
     }
+    if (counter == 0 )
+    {
+        *(pointer_to_head) = (LL_node_t*)current_temp_pointer->next_node;
+        free(current_temp_pointer);
+        
+    }
+    else 
+    {
+        previous_temp_pointer->next_node = current_temp_pointer->next_node;
+        free(current_temp_pointer);
 
-
-
-
+    }
 }
 
 

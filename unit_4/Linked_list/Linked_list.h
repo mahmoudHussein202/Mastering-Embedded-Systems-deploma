@@ -19,4 +19,4 @@ typedef enum {
 void LL_init_F(LL_node_t** pointer_to_head);
 LL_status_t add_node_F(LL_node_t** pointer_to_head);
 LL_status_t view_all_nodes_F(LL_node_t** pointer_to_head);
-LL_status_t delete_node(LL_node_t** pointer_to_head, int ID);
+LL_status_t delete_node_F(LL_node_t** pointer_to_head);
