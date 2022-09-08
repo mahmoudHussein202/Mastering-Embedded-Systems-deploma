@@ -158,8 +158,8 @@ LL_status_t Reverse_LL_F(LL_node_t** head_pointer)
         return empty_LL;
     LL_node_t *prev_pointer,*current_pointer,*next_pointer;
     prev_pointer = *(head_pointer);
-    current_pointer = (LL_node_t*)((*(head_pointer))->next_node);
-    prev_pointer->next_node == NULL;
+    current_pointer = (LL_node_t*)(prev_pointer->next_node);
+    (*(head_pointer))->next_node = NULL;
     while (!(current_pointer == NULL))
     {
         next_pointer = (LL_node_t*)current_pointer->next_node;
