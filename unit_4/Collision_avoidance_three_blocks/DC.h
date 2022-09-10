@@ -2,8 +2,8 @@
 
 typedef enum 
 {
-    motor_init_state,
-    motor_set_speed   
+    motor_init_state_e,
+    motor_set_speed_e   
 } motor_status_t;
 
 

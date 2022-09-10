@@ -27,7 +27,7 @@ void waiting_state()
     Algo_speed = 0 ;
     Algo_send_speed(Algo_speed);
     (Algo_distance >= threshold)?(Algo_state_pointer=driving_state):(Algo_state_pointer=waiting_state);
-    print("\n --  Waiting state , speed = %d , distance now = %d ",Algo_speed,Algo_distance);
+    print("\n --   Waiting state , speed = %d , distance now = %d ",Algo_speed,Algo_distance);
 
 }
 
@@ -37,6 +37,6 @@ void driving_state()
     Algo_speed = 30 ;
     Algo_send_speed(Algo_speed);
     (Algo_distance >= threshold)?(Algo_state_pointer=driving_state):(Algo_state_pointer=waiting_state);
-    print("\n --  Waiting state , speed = %d , distance now = %d ",Algo_speed,Algo_distance);
+    print("\n --   Driving state , speed = %d , distance now = %d ",Algo_speed,Algo_distance);
 
 }

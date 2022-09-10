@@ -15,5 +15,6 @@ void motor_init()
 void motor_set_speed()
 {
     motor_state_pointer = motor_set_speed;
-    print(" ---   Motor_set_speed_state :  speed = %d",DC_speed);
+    print("\n ---     Motor_set_speed_state :  speed = %d",DC_speed);
+    print("\n--------------------------------------------------------------");
 }
