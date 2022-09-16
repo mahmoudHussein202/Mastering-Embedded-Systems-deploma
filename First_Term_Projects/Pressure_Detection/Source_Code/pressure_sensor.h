@@ -6,5 +6,5 @@ typedef enum {
 }sensor_state_id_t;
 void (*sensor_state_pointer)();
 void sensor_init_F();
-sensor_state_id_t send_reading_F();
+void send_reading_F();
 #endif
