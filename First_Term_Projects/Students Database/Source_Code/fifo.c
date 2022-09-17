@@ -127,3 +127,42 @@ fifo_status_t find_element_by_first_Name_F(fifo_t* fifo_buffer)
             print("\n -----------------------------------------------------");
         }
 }
+
+fifo_status_t find_students_in_course_F(fifo_t* fifo_buffer)
+{
+    if (fifo_buffer->count == 0)
+    {
+        print("\n database is empty ");
+        return fifo_no_error;
+    }
+    int temp_course_ID,temp_count = 0, i = fifo_buffer->count ,j,*temp_course_pointer,student_state ;
+    student_t *temp_pointer;
+    temp_pointer = fifo_buffer->base;
+    print("\n Enter the course ID : ");
+    scanf("%d",&temp_course_ID);
+    while ( !(i==0))
+    {
+        temp_course_pointer = &(temp_pointer->course_1_ID);
+        student_state = 0;
+        for (j=5;j>0;j--)
+        {
+            if (*temp_course_pointer == temp_course_ID)
+            {
+                student_state = 1;
+            }
+            temp_course_pointer++;
+        }
+        if (student_state == 1)
+        {
+            temp_count++;
+            print("\n %d - %s %s ",temp_count,temp_pointer->First_Name,temp_pointer->Last_Name);
+        } 
+        temp_pointer++;
+        i--;
+    }
+    if (temp_count == 0)
+        {
+            print("\n there's no students in this course ");
+        }
+    return fifo_no_error;
+}
