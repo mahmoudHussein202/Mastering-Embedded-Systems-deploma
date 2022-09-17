@@ -155,7 +155,7 @@ fifo_status_t find_students_in_course_F(fifo_t* fifo_buffer)
         if (student_state == 1)
         {
             temp_count++;
-            print("\n %d - %s %s ",temp_count,temp_pointer->First_Name,temp_pointer->Last_Name);
+            print("\n %d - %s %s - ID : %d ",temp_count,temp_pointer->First_Name,temp_pointer->Last_Name,temp_pointer->student_ID);
         } 
         temp_pointer++;
         i--;
@@ -165,4 +165,43 @@ fifo_status_t find_students_in_course_F(fifo_t* fifo_buffer)
             print("\n there's no students in this course ");
         }
     return fifo_no_error;
+}
+
+fifo_status_t count_students_F(fifo_t* fifo_buffer)
+{
+    print("\n Number of students : %d ",fifo_buffer->count);
+}
+
+fifo_status_t delete_student_F(fifo_t* fifo_buffer)
+{
+    int temp_ID;
+    print("\n Enter the ID of the student : ");
+    scanf("%d",&temp_ID);
+    student_t* current_pointer;
+    student_t* next_pointer;
+    current_pointer = fifo_buffer->base;
+    while (!(current_pointer->student_ID == temp_ID))
+    {
+        current_pointer++;
+    }
+    next_pointer = current_pointer +1; 
+    while(1)
+    {
+        strcpy(current_pointer->First_Name , next_pointer->First_Name);
+        strcpy(current_pointer->Last_Name,next_pointer->Last_Name);
+        current_pointer->student_ID = next_pointer->student_ID;
+        current_pointer->course_1_ID = next_pointer->course_1_ID;
+        current_pointer->course_2_ID = next_pointer->course_2_ID;
+        current_pointer->course_3_ID = next_pointer->course_3_ID;
+        current_pointer->course_4_ID = next_pointer->course_4_ID;
+        current_pointer->course_5_ID = next_pointer->course_5_ID;
+        current_pointer++;
+        next_pointer++;
+        if (next_pointer == fifo_buffer->head)
+            break;
+    }
+    fifo_buffer->count--;
+    print("\n ------------------ Student is deleated succesfully ----------------");
+    return fifo_no_error;
+
 }
