@@ -32,7 +32,7 @@ fifo_status_t add_student_manually_F(fifo_t* fifo_buffer)
     scanf("%d",&(fifo_buffer->head->course_4_ID));
     print("\n Enter Course 5 ID : ");
     scanf("%d",&(fifo_buffer->head->course_5_ID));
-    print("\n -----------------DONE-------------------- ");
+    print("\n -----------------DONE-------------------- \n \n ");
     fifo_buffer->head ++ ;
     fifo_buffer->count ++ ;
     return fifo_no_error;
@@ -124,7 +124,7 @@ fifo_status_t find_element_by_first_Name_F(fifo_t* fifo_buffer)
             print("\n Course 3 ID = %d ",temp_pointer->course_3_ID);
             print("\n Course 4 ID = %d ",temp_pointer->course_4_ID);
             print("\n Course 5 ID = %d ",temp_pointer->course_5_ID);
-            print("\n -----------------------------------------------------");
+            print("\n -----------------------------------------------------\n");
         }
 }
 
@@ -201,7 +201,77 @@ fifo_status_t delete_student_F(fifo_t* fifo_buffer)
             break;
     }
     fifo_buffer->count--;
-    print("\n ------------------ Student is deleated succesfully ----------------");
+    print("\n ------------------ Student is deleated succesfully ---------------- \n\n");
     return fifo_no_error;
 
+}
+
+fifo_status_t update_student_F(fifo_t* fifo_buffer)
+{   
+    int temp_ID,choice = 0;
+    student_t* temp_pointer;
+    temp_pointer = fifo_buffer->base;
+    print("\n Enter Student ID ");
+    scanf("%d",&temp_ID);
+    while(!(temp_pointer->student_ID == temp_ID))
+    {
+        temp_pointer++;
+    }
+    while (!(choice == 9))
+    {
+        print("\n Choose what you need to modify : ");
+        print("\n   1- first name ");
+        print("\n   2- Last name ");
+        print("\n   3- student ID ");
+        print("\n   4- Course 1 ID ");
+        print("\n   5- Course 2 ID ");
+        print("\n   6- Course 3 ID ");
+        print("\n   7- Course 4 ID ");
+        print("\n   8- Course 5 ID ");
+        print("\n   9- Exit \n");
+        print("\n Enter the Choice : ");
+        scanf("%d",&choice);
+        switch (choice)
+        {
+        case 1:
+            print("\nEnter the New first Name ");
+            scanf("%s",&(temp_pointer->First_Name));
+            break;
+        case 2:
+            print("\nEnter the New Last Name ");
+            scanf("%s",&(temp_pointer->Last_Name));
+            break;
+        case 3:
+            print("\nEnter the New Student ID");
+            scanf("%d",&(temp_pointer->student_ID));
+            break;
+        case 4:
+            print("\nEnter the New Course 1 ID ");
+            scanf("%d",&(temp_pointer->course_1_ID));
+            break;
+        case 5:
+            print("\nEnter the New Course 2 ID ");
+            scanf("%d",&(temp_pointer->course_2_ID));
+            break;
+        case 6:
+            print("\nEnter the New Course 3 ID ");
+            scanf("%d",&(temp_pointer->course_3_ID));
+            break;
+        case 7:
+            print("\nEnter the New Course 4 ID ");
+            scanf("%d",&(temp_pointer->course_4_ID));
+            break;
+        case 8:
+            print("\nEnter the New Course 5 ID ");
+            scanf("%d",&(temp_pointer->course_5_ID));
+            break;
+        case 9:
+            break;
+        default:
+            print("\n Wrong Choice ");
+            break;
+        }
+        }
+
+    print("\n\n Modification of student ID = %d completed \n \n )",temp_ID );
 }

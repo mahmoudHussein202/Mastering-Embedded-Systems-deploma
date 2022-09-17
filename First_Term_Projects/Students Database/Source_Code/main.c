@@ -19,7 +19,7 @@ int main()
         print("\n 5 - find student by roll number ");
         print("\n 6 - find student by first name ");
         print("\n 7 - Students in a certain course ");
-        print("\n 8 - Add student ");
+        print("\n 8 - update student information ");
         print("\n 9 - Add student ");
         print("\n\n Enter the option number : ");
         scanf("%d",&choice);
@@ -42,6 +42,9 @@ int main()
             break;
         case 7 :
             find_students_in_course_F(&fifo_buffer);
+            break;
+        case 8 :
+            update_student_F(&fifo_buffer);
             break;
         default:
             break;

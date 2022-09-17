@@ -34,8 +34,8 @@ fifo_status_t find_student_by_roll_Num_F(fifo_t* fifo_buffer); //
 fifo_status_t find_element_by_first_Name_F(fifo_t* fifo_buffer); //
 fifo_status_t find_students_in_course_F(fifo_t* fifo_buffer); //
 fifo_status_t count_students_F(fifo_t* fifo_buffer); // 
-fifo_status_t delete_student_F(fifo_t* fifo_buffer);
-fifo_status_t update_student_F(fifo_t* fifo_buffer);
+fifo_status_t delete_student_F(fifo_t* fifo_buffer);//
+fifo_status_t update_student_F(fifo_t* fifo_buffer); //
 fifo_status_t view_all_students_F(fifo_t *fifo_buffer); //
 fifo_status_t view_student_info_F(fifo_t* fifo_buffer);
 
