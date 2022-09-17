@@ -1,4 +1,5 @@
 #include "stdio.h"
+#include "stdlib.h"
 #include "stdint.h"
 #include "fifo.h"
 #include "string.h"
@@ -234,35 +235,35 @@ fifo_status_t update_student_F(fifo_t* fifo_buffer)
         switch (choice)
         {
         case 1:
-            print("\nEnter the New first Name ");
+            print("\nEnter the New first Name : ");
             scanf("%s",&(temp_pointer->First_Name));
             break;
         case 2:
-            print("\nEnter the New Last Name ");
+            print("\nEnter the New Last Name : ");
             scanf("%s",&(temp_pointer->Last_Name));
             break;
         case 3:
-            print("\nEnter the New Student ID");
+            print("\nEnter the New Student ID : ");
             scanf("%d",&(temp_pointer->student_ID));
             break;
         case 4:
-            print("\nEnter the New Course 1 ID ");
+            print("\nEnter the New Course 1 ID : ");
             scanf("%d",&(temp_pointer->course_1_ID));
             break;
         case 5:
-            print("\nEnter the New Course 2 ID ");
+            print("\nEnter the New Course 2 ID : ");
             scanf("%d",&(temp_pointer->course_2_ID));
             break;
         case 6:
-            print("\nEnter the New Course 3 ID ");
+            print("\nEnter the New Course 3 ID : ");
             scanf("%d",&(temp_pointer->course_3_ID));
             break;
         case 7:
-            print("\nEnter the New Course 4 ID ");
+            print("\nEnter the New Course 4 ID : ");
             scanf("%d",&(temp_pointer->course_4_ID));
             break;
         case 8:
-            print("\nEnter the New Course 5 ID ");
+            print("\nEnter the New Course 5 ID : ");
             scanf("%d",&(temp_pointer->course_5_ID));
             break;
         case 9:
@@ -274,4 +275,44 @@ fifo_status_t update_student_F(fifo_t* fifo_buffer)
         }
 
     print("\n\n Modification of student ID = %d completed \n \n )",temp_ID );
+}
+
+fifo_status_t add_student_from_file_F(fifo_t* fifo_buffer)
+{
+    FILE *csv_file = fopen("Student_database.csv","r");
+    if (csv_file == NULL)
+    {
+        print("\n Can't read from the file ");
+        return fifo_error;
+    }
+    char line[200],first_line_esc = 0;
+    char* word;
+    while (fgets(line,sizeof(line),csv_file))
+    {   
+        if (first_line_esc == 0)
+        {
+            first_line_esc = 1 ; 
+        }
+        else 
+        {
+            word = strtok(line,","); // first name
+            strcpy(fifo_buffer->head->First_Name,word);
+            word = strtok(NULL,","); //last name
+            strcpy(fifo_buffer->head->Last_Name,word);
+            word = strtok(NULL,","); // student id 
+            fifo_buffer->head->student_ID = atoi(word);
+            word = strtok(NULL,","); // course_1_ID
+            fifo_buffer->head->course_1_ID = atoi(word);
+            word = strtok(NULL,","); // course_2_ID 
+            fifo_buffer->head->course_2_ID = atoi(word);
+            word = strtok(NULL,","); // course_3_ID 
+            fifo_buffer->head->course_3_ID = atoi(word);
+            word = strtok(NULL,","); // course_4_ID  
+            fifo_buffer->head->course_4_ID = atoi(word);
+            word = strtok(NULL,","); // course_5_ID 
+            fifo_buffer->head->course_5_ID = atoi(word);
+            fifo_buffer->head++;
+            fifo_buffer->count++;
+        }
+    }
 }

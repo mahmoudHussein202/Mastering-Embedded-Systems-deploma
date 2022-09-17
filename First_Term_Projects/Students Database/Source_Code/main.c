@@ -20,11 +20,14 @@ int main()
         print("\n 6 - find student by first name ");
         print("\n 7 - Students in a certain course ");
         print("\n 8 - update student information ");
-        print("\n 9 - Add student ");
+        print("\n 9 - count students ");
         print("\n\n Enter the option number : ");
         scanf("%d",&choice);
         switch (choice)
         {
+        case 1: 
+            add_student_from_file_F(&fifo_buffer);
+            break;
         case 2:
             add_student_manually_F(&fifo_buffer);
             break;
@@ -46,7 +49,11 @@ int main()
         case 8 :
             update_student_F(&fifo_buffer);
             break;
+        case 9 :
+            count_students_F(&fifo_buffer);
+            break;
         default:
+            print("\n Wrong Choice \n \n  ");
             break;
         }
     }
