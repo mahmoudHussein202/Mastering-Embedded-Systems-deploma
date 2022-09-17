@@ -17,12 +17,40 @@ fifo_status_t fifo_init(fifo_t* fifo_buffer, student_t *fifo_array,int length )
 
 fifo_status_t add_student_manually_F(fifo_t* fifo_buffer)
 {
+    int temp_ID;
+    int temp_count = fifo_buffer->count;
+    student_t* temp_pointer;
+    temp_pointer = fifo_buffer->base;
     print("\n Enter First Name : ");
     scanf("%s",&(fifo_buffer->head->First_Name));
     print("\n Enter Last Name : ");
     scanf("%s",&(fifo_buffer->head->Last_Name));
     print("\n Enter ID : ");
-    scanf("%d",&(fifo_buffer->head->student_ID));
+    while (1)
+    {
+        scanf("%d",&temp_ID);
+    // checking if this ID is not taken 
+        while(!(temp_count==0))
+        {
+            if(temp_pointer->student_ID == temp_ID)
+            {
+                print("\n this ID is already taken, try another one \n ");
+                break;
+                
+            }
+            else 
+            {
+                temp_pointer++;
+            }
+            temp_count--;
+            
+        }
+        if (temp_pointer == fifo_buffer->head)
+            break;
+        temp_pointer = fifo_buffer->base;
+        temp_count = fifo_buffer->count;
+    }
+    fifo_buffer->head->student_ID = temp_ID;
     print("\n Enter Course 1 ID : ");
     scanf("%d",&(fifo_buffer->head->course_1_ID));
     print("\n Enter Course 2 ID : ");
