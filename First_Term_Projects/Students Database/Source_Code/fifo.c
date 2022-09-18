@@ -145,8 +145,12 @@ fifo_status_t find_element_by_first_Name_F(fifo_t* fifo_buffer)
     {
         while (strcmp(temp_First_name,temp_pointer->First_Name))
             {
+                if (temp_pointer == fifo_buffer->head)
+                    break;
                 temp_pointer ++ ;
             }
+        if (temp_pointer == fifo_buffer->head)
+            break;
         print("\n Student Name = %s %s ",temp_pointer->First_Name, temp_pointer->Last_Name);
         print("\n Student ID = %d ",temp_pointer->student_ID);
         print("\n Course 1 ID = %d ",temp_pointer->course_1_ID);
