@@ -131,30 +131,34 @@ fifo_status_t find_student_by_roll_Num_F(fifo_t* fifo_buffer)
 fifo_status_t find_element_by_first_Name_F(fifo_t* fifo_buffer)
 {
     if (fifo_buffer->count == 0)
-        {
-            print("\n database is empty ");
-            return fifo_no_error;
-        }
-    else 
-        {
-            char temp_First_name[40] ;
-            student_t *temp_pointer;
-            temp_pointer = fifo_buffer->base; 
-            print("\n Enter the First Name : ");
-            scanf("%s",&temp_First_name);
-            while (strcmp(temp_First_name,temp_pointer->First_Name))
-                {
-                    temp_pointer ++ ;
-                }
-            print("\n Student Name = %s %s ",temp_pointer->First_Name, temp_pointer->Last_Name);
-            print("\n Student ID = %d ",temp_pointer->student_ID);
-            print("\n Course 1 ID = %d ",temp_pointer->course_1_ID);
-            print("\n Course 2 ID = %d ",temp_pointer->course_2_ID);
-            print("\n Course 3 ID = %d ",temp_pointer->course_3_ID);
-            print("\n Course 4 ID = %d ",temp_pointer->course_4_ID);
-            print("\n Course 5 ID = %d ",temp_pointer->course_5_ID);
-            print("\n -----------------------------------------------------\n");
-        }
+    {
+        print("\n database is empty ");
+        return fifo_no_error;
+    }
+    student_t *temp_pointer;
+    temp_pointer = fifo_buffer->base;
+    char temp_First_name[40] ;
+    print("\n Enter the First Name : ");
+    scanf("%s",&temp_First_name);
+ 
+    while (!(temp_pointer == fifo_buffer->head))
+    {
+        while (strcmp(temp_First_name,temp_pointer->First_Name))
+            {
+                temp_pointer ++ ;
+            }
+        print("\n Student Name = %s %s ",temp_pointer->First_Name, temp_pointer->Last_Name);
+        print("\n Student ID = %d ",temp_pointer->student_ID);
+        print("\n Course 1 ID = %d ",temp_pointer->course_1_ID);
+        print("\n Course 2 ID = %d ",temp_pointer->course_2_ID);
+        print("\n Course 3 ID = %d ",temp_pointer->course_3_ID);
+        print("\n Course 4 ID = %d ",temp_pointer->course_4_ID);
+        print("\n Course 5 ID = %d ",temp_pointer->course_5_ID);
+        print("\n -----------------------------------------------------\n");
+        temp_pointer++;
+    }
+
+        
 }
 
 fifo_status_t find_students_in_course_F(fifo_t* fifo_buffer)
@@ -307,22 +311,55 @@ fifo_status_t update_student_F(fifo_t* fifo_buffer)
 
 fifo_status_t add_student_from_file_F(fifo_t* fifo_buffer)
 {
+    student_t* temp_pointer;
+    int temp_count ;
+    char line[200],temp_line[200],first_line_esc = 0;
+    char* word, *id_checker;
+    int flag ;
     FILE *csv_file = fopen("Student_database.csv","r");
     if (csv_file == NULL)
     {
         print("\n Can't read from the file ");
         return fifo_error;
     }
-    char line[200],first_line_esc = 0;
-    char* word;
     while (fgets(line,sizeof(line),csv_file))
-    {   
+    {      
+        flag = 0 ;
+        temp_pointer = fifo_buffer->base;
+        temp_count = fifo_buffer->count;
         if (first_line_esc == 0)
         {
-            first_line_esc = 1 ; 
+            first_line_esc = 1 ;
+            continue;
         }
         else 
         {
+            strcpy(temp_line,line);
+            id_checker = strtok(temp_line,","); // first name
+            id_checker = strtok(NULL,","); //last name
+            id_checker = strtok(NULL,","); // student id 
+            
+            if (fifo_buffer->count != 0)
+            {
+                while(!(temp_count==0))
+                {
+                    
+                    if(temp_pointer->student_ID == atoi(id_checker))
+                    {
+                        print("\n  ID ( %s )  is repeated, please change it \n \n",id_checker);
+                        flag =1 ;
+                        break;
+                    }
+                    else 
+                    {
+                        temp_pointer++;     
+                    }
+                    temp_count--;
+                    
+                }
+            if (flag == 1 )
+                continue;
+            }
             word = strtok(line,","); // first name
             strcpy(fifo_buffer->head->First_Name,word);
             word = strtok(NULL,","); //last name
