@@ -1,0 +1,81 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+flash            0x00000000         0x00020000         xr
+sram             0x20000000         0x00005000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+
+.text           0x00000000      0xd26
+ *(.vectors*)
+ .vectors       0x00000000       0x10 startup.o
+                0x00000000                ptr_vectors
+ *(.text *)
+ .glue_7        0x00000010        0x0 linker stubs
+ .glue_7t       0x00000010        0x0 linker stubs
+ .vfp11_veneer  0x00000010        0x0 linker stubs
+ .v4_bx         0x00000010        0x0 linker stubs
+ .text          0x00000010       0x90 startup.o
+                0x00000010                Reset_Handler
+                0x00000094                Default_Handler
+                0x00000094                H_fault_Handler
+                0x00000094                NMI_Handrer
+ .data          0x000000a0        0x0 startup.o
+ .bss           0x000000a0      0x400 startup.o
+ .debug_info    0x000004a0      0x185 startup.o
+ .debug_abbrev  0x00000625       0xcd startup.o
+ .debug_loc     0x000006f2       0x7c startup.o
+ .debug_aranges
+                0x0000076e       0x20 startup.o
+ .debug_line    0x0000078e       0xbf startup.o
+ .debug_str     0x0000084d      0x173 startup.o
+                                0x1ac (size before relaxing)
+ .comment       0x000009c0       0x49 startup.o
+                                 0x4a (size before relaxing)
+ *fill*         0x00000a09        0x3 
+ .debug_frame   0x00000a0c       0x50 startup.o
+ .ARM.attributes
+                0x00000a5c       0x2e startup.o
+ .iplt          0x00000a8a        0x0 startup.o
+ .rel.iplt      0x00000a8a        0x0 startup.o
+ .igot.plt      0x00000a8a        0x0 startup.o
+ *fill*         0x00000a8a        0x2 
+ .text          0x00000a8c       0x8c main.o
+                0x00000a8c                main
+ .data          0x00000b18        0x0 main.o
+ .bss           0x00000b18        0x0 main.o
+ .debug_info    0x00000b18       0x5c main.o
+ .debug_abbrev  0x00000b74       0x51 main.o
+ .debug_loc     0x00000bc5       0x38 main.o
+ .debug_aranges
+                0x00000bfd       0x20 main.o
+ .debug_line    0x00000c1d       0x9a main.o
+ .debug_str     0x00000cb7       0x12 main.o
+                                 0xbc (size before relaxing)
+ .comment       0x00000cc9       0x4a main.o
+ *fill*         0x00000cc9        0x3 
+ .debug_frame   0x00000ccc       0x2c main.o
+ .ARM.attributes
+                0x00000cf8       0x2e main.o
+ *(.rodata)
+                0x00000d26                _E_text = .
+
+.data           0x20000000        0x0 load address 0x00000d26
+                0x20000000                _S_Data = .
+ *(.data)
+                0x20000000                _E_Data = .
+
+.bss            0x20000000     0x1000 load address 0x00000d26
+                0x20000000                _S_bss = .
+ *(.bss)
+                0x20000000                _E_bss = .
+                0x20001000                . = (. + 0x1000)
+ *fill*         0x20000000     0x1000 
+                0x20001000                _stack_top = .
+LOAD startup.o
+LOAD main.o
+OUTPUT(TivaC.elf elf32-littlearm)
+LOAD linker stubs
