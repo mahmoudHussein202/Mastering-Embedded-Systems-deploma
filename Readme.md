@@ -1,1 +1,3 @@
-# Embedded online deploma 
+# Mastering Embedded Systems
+----------------------------
+LEARN-IN-DEPTH
