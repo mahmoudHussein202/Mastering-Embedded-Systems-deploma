@@ -1,0 +1,4 @@
+fifo.c:3:15:fifo_init_F	24	static
+fifo.c:12:15:push_element_F	16	static
+fifo.c:24:14:pop_element_F	24	static
+fifo.c:37:15:show_all_elements_F	24	static

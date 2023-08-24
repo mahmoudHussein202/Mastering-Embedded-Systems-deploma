@@ -1,0 +1,6 @@
+schedular.c:34:6:OS_SVC	24	static
+schedular.c:49:6:Mahmoud_RTOS_Create_main_stack	4	static
+schedular.c:57:23:Mahmoud_RTOS_init	16	static
+schedular.c:79:6:MAHMOUD_RTOS_IDLE_TASK	4	static,ignoring_inline_asm
+schedular.c:85:23:Mahmoud_RTOS_create_stack	24	static
+schedular.c:126:23:Mahmoud_RTOS_create_task	24	static
