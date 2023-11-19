@@ -1,5 +1,5 @@
 MY RTOS Project
 --------------
-![](https://github.com/unit_15-RTOS/Analyzer.gif)
+![](https://github.com/Embedded-online-deploma/unit_15-RTOS/Analyzer.gif)
 
 
