@@ -1,0 +1,35 @@
+﻿/*@!Encoding:65001*/
+includes
+{
+  
+}
+
+variables
+{
+  msTimer send_Timer  ; // variable type msTimer which have a crossponing function
+  const int sending_period = 25 ; 
+  int acceleration_signal = 1 ;
+  message Accelerator_manager Acc_CMD ;
+  int counter = 0 ;
+}
+ on start 
+{
+  write("################# Mastering Can CaseStudy#################");
+  setTimer(send_Timer,sending_period);
+}
+
+on timer send_Timer
+{
+    Acc_CMD.Acceleration_Deceleration.phys = acceleration_signal;
+    output(Acc_CMD);
+    if ( counter == 120 )
+    {
+      acceleration_signal ^= 1;
+      counter = 0 ; 
+    }
+    else 
+    {
+      counter ++ ;
+    }
+    setTimer(send_Timer,sending_period);
+}

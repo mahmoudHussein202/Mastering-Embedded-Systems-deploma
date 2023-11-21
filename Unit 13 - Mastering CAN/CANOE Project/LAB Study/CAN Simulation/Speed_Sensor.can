@@ -1,0 +1,56 @@
+﻿/*@!Encoding:65001*/
+includes
+{
+  
+}
+
+variables
+{
+  int current_speed = 0 ;
+  message speed_sensor speed_msg; 
+}
+
+on start 
+{
+  write("###############  ECU 2 start #################"); 
+}
+
+on message Accelerator_manager 
+{
+  write("########## recevied message from ECU1 (Acceleration Manager )  ");
+  if (this.Acceleration_Deceleration.phys ==1 )
+  {
+    if(current_speed > 255)
+    {
+      current_speed = 255 ;
+      speed_msg.Speed_Sensor.phys = current_speed;
+      output(speed_msg);
+    }
+    else 
+    {
+
+        current_speed = current_speed + 1;
+        speed_msg.Speed_Sensor.phys = current_speed;
+        output(speed_msg);
+    }
+  }
+  else if (this.Acceleration_Deceleration.phys ==0 )
+  {
+    if(current_speed < 0)
+    {
+      current_speed = 0 ;
+      speed_msg.Speed_Sensor.phys = current_speed;
+      output(speed_msg);
+    }
+    else 
+    {
+      
+        current_speed = current_speed - 1;
+        speed_msg.Speed_Sensor.phys = current_speed;
+        output(speed_msg);
+      
+    }
+  }
+
+}
+
