@@ -1,5 +1,5 @@
-Abstract :  
-
+# Abstract :  
+--------------
 This project is a Pressure controlling System, where the system  will inform the crew of the cabin with an alarm when the pressure exceeds 20 bars in the cabin, also the system will be tracking the measured values. 
 
 This report contains the system architecting and Design sequence, so this report is divided into six n  sections : 
@@ -37,7 +37,7 @@ the “ keep track of measured value “ option will not be modeled in the first
 
 The SDLC method that will be used is the V-Model 
 
-![](Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.001.jpeg)
+![](https://1drv.ms/i/s!ApnoLrygIFbngQmMEtk2vqGCwQKf?e=wBy2v8)
 
 3- System Requirements.  
 
