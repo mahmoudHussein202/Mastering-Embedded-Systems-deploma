@@ -90,9 +90,9 @@ Simulation :
 
 pressure below the threshold :  
 
-0  ![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.011.jpeg)![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.012.png)0  
+0  ![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.011.jpeg)0  
 
-Input  0  ![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.013.png)pressure  0  
+Input  0  pressure  0  
 
 - 16   
 
@@ -100,7 +100,7 @@ Input  0  ![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-de
 
 Pressure above the threshold : 
 
-0  ![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.014.jpeg)![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.015.png)
+0  ![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.014.jpeg)
 
 0  
 
