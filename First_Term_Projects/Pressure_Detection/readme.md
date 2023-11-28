@@ -36,8 +36,7 @@ the “ keep track of measured value “ option will not be modeled in the first
 2- Method. 
 
 The SDLC method that will be used is the V-Model 
-
-[![image](https://1drv.ms/i/s!ApnoLrygIFbngQmMEtk2vqGCwQKf?e=wBy2v8)
+[![image](https://1drv.ms/i/s!ApnoLrygIFbngQmMEtk2vqGCwQKf?e=wBy2v8)]
 
 3- System Requirements.  
 
