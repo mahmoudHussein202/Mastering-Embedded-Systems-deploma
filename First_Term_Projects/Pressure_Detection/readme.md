@@ -104,7 +104,7 @@ Pressure above the threshold :
 
 0  
 
-0  ![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.016.png)Input  
+0  
 
 pressure  0  
 
