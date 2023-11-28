@@ -1,5 +1,5 @@
-Abstract :  
-
+# Abstract :  
+-------------
 This project is a Pressure controlling System, where the system  will inform the crew of the cabin with an alarm when the pressure exceeds 20 bars in the cabin, also the system will be tracking the measured values. 
 
 This report contains the system architecting and Design sequence, so this report is divided into six n  sections : 
@@ -33,67 +33,66 @@ The client expects you to deliver the software of the following system specifica
 
 the “ keep track of measured value “ option will not be modeled in the first version. 
 
-2- Method. 
-
+# 2- Method. 
+-------------
 The SDLC method that will be used is the V-Model 
 
 ![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.001.jpeg)
 
-3- System Requirements.  
-
+# 3- System Requirements.  
+--------------------------
 After studying the customer requirements, this is the requirement diagram that will be used in  The next meeting with the customer. 
 
-![](Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.002.jpeg)
+![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.002.jpeg)
 
-4- Space Exploration and partitioning. 
+# 4- Space Exploration and partitioning. 
+------------------------------------------
+The MCU that will be used is STM32 ![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.003.png)
 
-The MCU that will be used is STM32 ![](Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.003.png)
-
-5- System Analysis. 
-
+# 5- System Analysis. 
+----------------------
 System Analysis consists of three main sections : 
-
 - Use Case Diagram “System Boundaries and main functions” 
 - Activity Diagram “Relation between main functions” 
 - Sequence Diagram “Communications between main system entities and actors” 
 
 A-  Use case Diagram : 
 
-![](Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.004.jpeg)
+![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.004.jpeg)
 
 B-  Activity Diagram 
 
-![](Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.005.jpeg)
+![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.005.jpeg)
 
 C-  Sequential Diagram 
 
-![](Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.006.jpeg)
+![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.006.jpeg)
 
-6- System Design 
-
+# 6- System Design 
+-------------------
 - Block Diagram : 
 
-![](Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.007.jpeg)
+![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.007.jpeg)
 
 - Pressure Reading Block 
 
-![](Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.008.jpeg)
+![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.008.jpeg)
 
 - Main Algorithm Block   
 
-![](Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.009.jpeg)
+![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.009.jpeg)
 
 - Alarm Controller block 
 
-![](Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.010.jpeg)
+![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.010.jpeg)
 
 Simulation : 
 
 pressure below the threshold :  
 
-0  ![](Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.011.jpeg)![](Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.012.png)0  
+0  ![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.011.jpeg)![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.012.png)0  
 
-Input  0  ![](Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.013.png)pressure  0  
+Input  0  ![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.013.png)pressure  0  
 
 - 16   
 
@@ -101,11 +100,11 @@ Input  0  ![](Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.013.png)pressure
 
 Pressure above the threshold : 
 
-0  ![](Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.014.jpeg)![](Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.015.png)
+0  ![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.014.jpeg)![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.015.png)
 
 0  
 
-0  ![](Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.016.png)Input  
+0  ![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.016.png)Input  
 
 pressure  0  
 
@@ -117,7 +116,7 @@ Recommendation in Version 1.1 :
 
 Need to store the values of the Measured pressures in the flash memory 
 
-![](Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.017.jpeg)
+![](https://github.com/mahmoudHussein202/Mastering-Embedded-Systems-deploma/blob/master/First_Term_Projects/Pressure_Detection/Report/Aspose.Words.a28f5dfc-a86e-4b51-bb70-9f4134a593e7.017.jpeg)
 
 Conclusion : 
 
