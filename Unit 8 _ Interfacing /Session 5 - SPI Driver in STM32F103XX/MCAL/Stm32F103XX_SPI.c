@@ -8,6 +8,8 @@
 #include "STM32F103XX_SPI.h"
 #include "STM32F103XX_RCC.h"
 #include "STM32F103XX_GPIO.h"
+#include "peripherals_interfaces.h"
+uint16_t*	user_data_address;
 void SPI_init(SPI_Config_t* SPI_config)
 {
 	/*[1] clock enable
@@ -75,18 +77,66 @@ void SPI_init(SPI_Config_t* SPI_config)
 	}
 	/*[3]Enable the SPI
 	 --------------------*/
-	if (SPI_config->SPI_num == SPI_1)
-		SPI_1_P->SPI_CR1 |= 1<<6;
-	else if (SPI_config->SPI_num == SPI_2)
-		SPI_2_P->SPI_CR1 |= 1<<6;
+	SPI_config->SPI_num->SPI_CR1|=1<<6;
 
-	/*[4] enable interrupt ( NVIC and Module )
+	/*[4]Select Master or slave
+	 *--------------------------*/
+	if (SPI_config->master_enable == SPI_Master_Enable)
+		SPI_config->SPI_num->SPI_CR1 |= 1<<2 ;
+	else if  (SPI_config->master_enable == SPI_Master_Disable)
+		SPI_config->SPI_num->SPI_CR1 &= ~(1<<2) ;
+	/*[5] enable interrupt ( NVIC and Module )
 	 -------------------------------------------*/
 
-	/*[5] set the controls from the SPI_config
+	/*[6] set the controls from the SPI_config
 	 ------------------------------------------*/
-	if (SPI_config->SPI_num == SPI_1)
-	{
+		//[a]clock_phase
+	if(SPI_config->clock_phase == SPI_CLK_first_edge)
+		SPI_config->SPI_num->SPI_CR1 &=~(1<<0);
+	else if (SPI_config->clock_phase == SPI_CLK_second_edge)
+		SPI_config->SPI_num->SPI_CR1 |= (1<<0);
+		//[b]clock_Polarity
+	if(SPI_config->clock_polarity == SPI_CLK_idle_low)
+		SPI_config->SPI_num->SPI_CR1 &=~(1<<1);
+	else if (SPI_config->clock_polarity == SPI_CLK_idle_high)
+		SPI_config->SPI_num->SPI_CR1 |= (1<<1);
+		//[c] Baudrate
+	set_bits_once(SPI_config->SPI_num->SPI_CR1,3,SPI_config->baud_rate_select);
+		//[d] Data_size
+	if (SPI_config->data_size == SPI_8_bit_data)
+		set_bit(&(SPI_config->SPI_num->SPI_CR1),8);
+	else if (SPI_config->data_size == SPI_16_bit_data)
+		clear_bit(&(SPI_config->SPI_num->SPI_CR1),8);
+		//[E] Frame_Format
+	if (SPI_config->frame_format == SPI_LSB_transmitted_first)
+		set_bit(&(SPI_config->SPI_num->SPI_CR1),7);
+	else if (SPI_config->data_size == SPI_MSB_transmitted_first)
+		clear_bit(&(SPI_config->SPI_num->SPI_CR1),7);
+		//[F] Interrupt_Enable
+			//-----------------NVIC-------------------
 
-	}
+			//----------------from SPI module --------
+	if (SPI_config->transmit_interrupt_enable == SPI_TXEIE_Enable)
+		set_bit(&(SPI_config->SPI_num->SPI_CR2),7);
+	if (SPI_config->transmit_interrupt_enable == SPI_RXNEIE_Enable)
+		set_bit(&(SPI_config->SPI_num->SPI_CR2),6);
+
 }
+
+void SPI_send_data(SPI_Config_t* SPI_config, uint16_t data)
+{
+	SPI_config->SPI_num->SPI_DR = data;
+	if(SPI_config->polling_enable == SPI_Polling_Enable)
+		while((SPI_config->SPI_num->SPI_SR)&(1<<1)>>1);
+}
+void SPI_recevie_data(SPI_Config_t* SPI_config, uint16_t* data)
+{
+	if(SPI_config->polling_enable == SPI_Polling_Enable)
+	{
+		while((SPI_config->SPI_num->SPI_SR)&(1<<0)>>0);
+		*data = SPI_config->SPI_num->SPI_DR ;
+	}
+	else
+		user_data_address = data;		// recieve call back will save the value in this variable
+}
+
